@@ -30,7 +30,7 @@ class Reservations(Resource):
 
     @api_ns.doc('Devices')
     @api_ns.marshal_with(backup_outputs, code=http.client.OK)
-    def post(self):
+    def get(self):
         '''Get all reservations'''
         data = api_ns.payload
         api_ns.logger.debug("data {}".format(data))
@@ -38,5 +38,5 @@ class Reservations(Resource):
         # data_json = services.serialization(data)
 
         raw_response = services.get_devices()
-
+        print("raw response {}".format(raw_response))
         return raw_response
